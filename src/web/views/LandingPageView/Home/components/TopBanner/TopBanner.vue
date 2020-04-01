@@ -30,13 +30,12 @@
                 title="Title"
                 subtitle="Subtitle"
                 tag="tag"
-                color-theme="basic"
+                color-theme="primary"
               />
               <mew-button
                 btn-style="outline"
-                text="Get a new wallet"
-                color-theme="basic"
-                @click.native="hello()"
+                title="Get a new wallet"
+                color-theme="primary"
               />
               <StdButton
                 buttonclass="button--green-border"
@@ -53,17 +52,14 @@
 
 <script>
 import StdButton from '@/web/components/StdButton';
-import { MewButton, MewSuperButton } from '@myetherwallet/mew-components';
+import { MewSuperButton, MewButton } from '@myetherwallet/mew-components';
 
 export default {
   name: 'HomeContainer',
   components: {
     StdButton,
-    MewSuperButton,
-    MewButton
-  },
-  mounted() {
-    console.error('hello', MewButton, MewSuperButton)
+    MewButton,
+    MewSuperButton
   }
 };
 </script>

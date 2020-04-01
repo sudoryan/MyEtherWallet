@@ -15,11 +15,8 @@ import '@/common/plugins/registerServiceWorker';
 import { Promise } from 'q';
 import VueI18n from 'vue-i18n';
 import vuetify from '@/common/plugins/vuetify';
-// import mewComponents from '@myetherwallet/mew-components';
 
 Vue.prototype.$eventHub = new Vue();
-
-Vue.use(vuetify);
 
 //Router
 Vue.use(Router);
@@ -28,8 +25,6 @@ Vue.router = router;
 Vue.config.productionTip = false;
 
 Vue.use(Vuex);
-
-// Vue.use(meswComponents);
 
 // // Define vue-i18n
 Vue.use(VueI18n);
