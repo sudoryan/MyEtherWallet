@@ -11,6 +11,13 @@ export default new Vuetify({
     dark: false,
     themes: {
       light: {
+        primary: '#05c0a5',
+        secondary: '#5a78f0',
+        error: '#FF445B',
+        white: '#ffffff',
+        basic: '#0b2840',
+        'light-green': '#F1FAFA',
+        disabled: '#cecece',
         emerald: '#05c0a5',
         royalBlue: '#5a78f0',
         darkSacramento: '#003945',

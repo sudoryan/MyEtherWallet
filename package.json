@@ -33,6 +33,7 @@
     "pre-commit": "npm run lint && npm run test"
   },
   "dependencies": {
+    "@myetherwallet/mew-components": "0.1.8-beta",
     "@sentry/browser": "5.12.1",
     "@sentry/integrations": "5.12.0",
     "highcharts": "8.0.4",
@@ -67,7 +68,7 @@
     "package-json": "6.5.0",
     "postcss-import": "12.0.1",
     "postcss-url": "8.0.0",
-    "prettier": "2.0.2",
+    "prettier": "1.19.1",
     "remark-cli": "7.0.1",
     "remark-preset-lint-recommended": "3.0.3",
     "sass": "1.26.3",

@@ -20,12 +20,24 @@
               blockchain easily and securely.
             </p>
             <div class="mt-7">
-              <StdButton
+              <!-- <StdButton
                 buttonclass="button--green"
                 class="mr-4"
                 :to="{ name: 'HomeCreateWallet' }"
                 >Get a new wallet</StdButton
-              >
+              > -->
+              <mew-super-button
+                title="Title"
+                subtitle="Subtitle"
+                tag="tag"
+                color-theme="basic"
+              />
+              <mew-button
+                btn-style="outline"
+                text="Get a new wallet"
+                color-theme="basic"
+                @click.native="hello()"
+              />
               <StdButton
                 buttonclass="button--green-border"
                 :to="{ name: 'HomeAccessWallet' }"
@@ -41,13 +53,18 @@
 
 <script>
 import StdButton from '@/web/components/StdButton';
+import { MewButton, MewSuperButton } from '@myetherwallet/mew-components';
 
 export default {
   name: 'HomeContainer',
   components: {
-    StdButton
+    StdButton,
+    MewSuperButton,
+    MewButton
   },
-  methods: {}
+  mounted() {
+    console.error('hello', MewButton, MewSuperButton)
+  }
 };
 </script>
 
