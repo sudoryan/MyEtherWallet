@@ -7,9 +7,15 @@
           @click="openSettings = true"
         >
           <img
+            width="26"
+            height="26"
+            src="@/assets/images/icons/icon-setting-disable.png"
+            class="mr-3"
+          />
+          <img
             width="23"
             height="23"
-            src="@/assets/images/icons/icon-swap-dark.svg"
+            src="@/assets/images/icons/icon-setting-enable.png"
             class="mr-3"
           />
           <div>Settings</div>
@@ -18,9 +24,15 @@
       <v-list-item>
         <div class="cursor--pointer d-flex align-center">
           <img
+            width="26"
+            height="26"
+            src="@/assets/images/icons/icon-logout-disable.png"
+            class="mr-3"
+          />
+          <img
             width="23"
             height="23"
-            src="@/assets/images/icons/icon-swap-dark.svg"
+            src="@/assets/images/icons/icon-logout-enable.png"
             class="mr-3"
           />
           <div>Log out</div>

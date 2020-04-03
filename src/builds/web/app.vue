@@ -22,5 +22,5 @@ export default {
 
 <style lang="scss">
 @import '@/assets/styles/GlobalVariables.scss';
-@import '@/assets/styles/GlobalStyles.scss';
+@import '@myetherwallet/mew-components/src/assets/styles/typography.min.scss';
 </style>
