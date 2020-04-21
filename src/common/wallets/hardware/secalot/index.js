@@ -36,7 +36,7 @@ class SecalotWallet {
   }
   getAccount(idx) {
     const derivedKey = this.hdKey.derive('m/' + idx);
-    const txSigner = async tx => {
+    const txSigner = async (tx) => {
       tx = new Transaction(tx, {
         common: commonGenerator(store.state.network)
       });
@@ -59,7 +59,7 @@ class SecalotWallet {
         );
       return getSignTransactionObject(tx);
     };
-    const msgSigner = async msg => {
+    const msgSigner = async (msg) => {
       const result = await this.secalot.signMessageAsync(
         this.basePath + '/' + idx,
         msg

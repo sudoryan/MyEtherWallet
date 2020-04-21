@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 
-const mapToObject = map => {
+const mapToObject = (map) => {
   const obj = {};
   for (const prop of map) {
     obj[prop[0]] = prop[1];
@@ -8,7 +8,7 @@ const mapToObject = map => {
   return obj;
 };
 
-const objectToMap = obj => {
+const objectToMap = (obj) => {
   return new Map(Object.entries(obj));
 };
 
@@ -64,7 +64,7 @@ function stringEqual(strA, strB) {
   return mismatch === 0;
 }
 
-const isJson = str => {
+const isJson = (str) => {
   try {
     JSON.parse(str);
     return true;

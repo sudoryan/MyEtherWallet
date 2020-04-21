@@ -96,9 +96,9 @@ export default class BitySwap {
       const rates = await getRates();
       const data = rates.objects;
 
-      exitData.forEach(entry => {
+      exitData.forEach((entry) => {
         if (entry.enabled) {
-          data.forEach(rateEntry => {
+          data.forEach((rateEntry) => {
             if (
               rateEntry.pair === entry.input + entry.output &&
               !this.fiatCurrencies.includes(entry.input)
@@ -111,7 +111,7 @@ export default class BitySwap {
           });
         }
       });
-      data.forEach(pair => {
+      data.forEach((pair) => {
         if (~this.mainPairs.indexOf(pair.pair.substring(3))) {
           if (pair.is_enabled && !this.fiatCurrencies.includes(pair.source)) {
             this.rates.set(

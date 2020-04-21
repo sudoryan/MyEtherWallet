@@ -37,7 +37,7 @@ class TrezorWallet {
   }
   getAccount(idx) {
     const derivedKey = this.hdKey.derive('m/' + idx);
-    const txSigner = async tx => {
+    const txSigner = async (tx) => {
       tx = new Transaction(tx, {
         common: commonGenerator(store.state.network)
       });
@@ -62,7 +62,7 @@ class TrezorWallet {
         );
       return getSignTransactionObject(tx);
     };
-    const msgSigner = async msg => {
+    const msgSigner = async (msg) => {
       const result = await Trezor.ethereumSignMessage({
         path: this.basePath + '/' + idx,
         message: toBuffer(msg).toString('hex'),
@@ -95,13 +95,13 @@ class TrezorWallet {
     return this.supportedPaths;
   }
 }
-const createWallet = async basePath => {
+const createWallet = async (basePath) => {
   const _trezorWallet = new TrezorWallet();
   await _trezorWallet.init(basePath);
   return _trezorWallet;
 };
 createWallet.errorHandler = errorHandler;
-const getRootPubKey = async _path => {
+const getRootPubKey = async (_path) => {
   const result = await Trezor.ethereumGetPublicKey({ path: _path });
   if (!result.payload) {
     throw new Error('popup failed to open');

@@ -2,7 +2,7 @@ import { host } from './config';
 import { post, get } from '@/helpers/httpRequests';
 import { utils } from '../helpers';
 
-const getQuote = reqObj => {
+const getQuote = (reqObj) => {
   try {
     const options = {
       mode: 'cors',
@@ -16,7 +16,7 @@ const getQuote = reqObj => {
     utils.handleOrThrow(e);
   }
 };
-const getOrder = reqObj => {
+const getOrder = (reqObj) => {
   try {
     const options = {
       mode: 'cors',
@@ -31,7 +31,7 @@ const getOrder = reqObj => {
   }
 };
 
-const getStatus = userId => {
+const getStatus = (userId) => {
   try {
     return get(`${host.url}/status/${userId}`);
   } catch (e) {

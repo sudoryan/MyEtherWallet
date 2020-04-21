@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="61px" viewBox="0 0 64 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Rectangle Copy 6</title>
+    <desc>Created with Sketch.</desc>
+    <g id="dapps-center" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5-Copy" transform="translate(0.000000, -1.000000)">
+            <path d="M28.7449574,3.5293698 L3.66817003,28.0924175 C1.69544587,30.0247272 1.66268342,33.1903825 3.59499305,35.1631067 C3.62599581,35.1947579 3.65741789,35.2259956 3.68925098,35.2568115 L28.9002481,59.6622704 C30.8269443,61.527405 33.8819436,61.5405323 35.8245972,59.6920241 L60.3568353,36.3486742 C62.3573292,34.4451288 62.4359215,31.2802796 60.5323761,29.2797857 C60.5257503,29.2728225 60.5191045,29.2658784 60.5124387,29.2589535 L35.8459908,3.63379682 C33.9309401,1.644314 30.7656902,1.58397485 28.7762074,3.49902556 C28.7657467,3.50909489 28.7553299,3.51920973 28.7449574,3.5293698 Z" id="Path-5" fill="#CDF4EE"></path>
+            <path d="M16,29 L31.9836066,13.0061074" id="Line-3" stroke="#5A78F0" stroke-width="4.5" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M31.6885246,30 L47.704918,13.0061074" id="Line-3" stroke="#5A78F0" stroke-width="4.5" stroke-linecap="round" fill-rule="nonzero" transform="translate(39.844262, 21.524590) scale(-1, 1) translate(-39.844262, -21.524590) "></path>
+        </g>
+    </g>
+</svg>

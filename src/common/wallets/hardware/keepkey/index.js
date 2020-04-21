@@ -47,7 +47,7 @@ class KeepkeyWallet {
       this.eventHub.$emit(
         'showHardwarePinMatrix',
         { name: this.identifier },
-        pin => {
+        (pin) => {
           this.keepkey.acknowledgeWithPin(pin).catch(errorHandler);
         }
       );
@@ -56,7 +56,7 @@ class KeepkeyWallet {
       this.eventHub.$emit(
         'showHardwarePassword',
         { name: this.identifier },
-        passPhrase => {
+        (passPhrase) => {
           this.keepkey
             .acknowledgeWithPassphrase(passPhrase)
             .catch(errorHandler);
@@ -89,7 +89,7 @@ class KeepkeyWallet {
       derivedKey = this.hdKey.derive('m/' + idx);
       accountPath = this.basePath + '/' + idx;
     }
-    const txSigner = async tx => {
+    const txSigner = async (tx) => {
       tx = new Transaction(tx, {
         common: commonGenerator(store.state.network)
       });
@@ -117,7 +117,7 @@ class KeepkeyWallet {
         );
       return getSignTransactionObject(tx);
     };
-    const msgSigner = async msg => {
+    const msgSigner = async (msg) => {
       const signMessage = new Messages.EthereumSignMessage();
       signMessage.setAddressNList(bip32ToAddressNList(accountPath));
       signMessage.setMessage(new Uint8Array(toBuffer(msg)));

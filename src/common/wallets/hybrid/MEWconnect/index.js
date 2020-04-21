@@ -45,11 +45,11 @@ class MEWconnectWallet {
   }
   async init(qrcode) {
     this.mewConnect.on('codeDisplay', qrcode);
-    const txSigner = async tx => {
+    const txSigner = async (tx) => {
       let tokenInfo;
       if (tx.data.slice(0, 10) === '0xa9059cbb') {
         tokenInfo = store.state.network.type.tokens.find(
-          entry => entry.address.toLowerCase() === tx.to.toLowerCase()
+          (entry) => entry.address.toLowerCase() === tx.to.toLowerCase()
         );
         if (tokenInfo) {
           tx.currency = {
@@ -60,9 +60,9 @@ class MEWconnectWallet {
         }
       }
       const networkId = tx.chainId;
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         this.mewConnect.sendRtcMessage('signTx', JSON.stringify(tx));
-        this.mewConnect.once('signTx', result => {
+        this.mewConnect.once('signTx', (result) => {
           tx = new Transaction(sanitizeHex(result), {
             common: commonGenerator(store.state.network)
           });
@@ -79,14 +79,14 @@ class MEWconnectWallet {
         });
       });
     };
-    const msgSigner = async msg => {
-      return new Promise(resolve => {
+    const msgSigner = async (msg) => {
+      return new Promise((resolve) => {
         const msgHash = hashPersonalMessage(toBuffer(msg));
         this.mewConnect.sendRtcMessage('signMessage', {
           hash: msgHash.toString('hex'),
           text: msg
         });
-        this.mewConnect.once('signMessage', data => {
+        this.mewConnect.once('signMessage', (data) => {
           resolve(getBufferFromHex(sanitizeHex(data.sig)));
         });
       });
@@ -107,18 +107,18 @@ class MEWconnectWallet {
     );
   }
 }
-const createWallet = async qrcode => {
+const createWallet = async (qrcode) => {
   const _MEWconnectWallet = new MEWconnectWallet();
   const _tWallet = await _MEWconnectWallet.init(qrcode);
   return _tWallet;
 };
 createWallet.errorHandler = errorHandler;
 const signalerConnect = (url, mewConnect) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     mewConnect.initiatorStart(url);
     mewConnect.on('RtcConnectedEvent', () => {
       mewConnect.sendRtcMessage('address', '');
-      mewConnect.once('address', data => {
+      mewConnect.once('address', (data) => {
         resolve(data.address);
       });
     });

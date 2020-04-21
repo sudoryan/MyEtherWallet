@@ -108,7 +108,7 @@ export default class Changelly {
   }
 
   getFixedRate(fromCurrency, toCurrency, fromValue) {
-    return new Promise(async resolve => {
+    return new Promise(async (resolve) => {
       const timeout = setTimeout(() => {
         resolve({
           fromCurrency,

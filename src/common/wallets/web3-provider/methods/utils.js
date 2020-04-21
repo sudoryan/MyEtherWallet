@@ -1,5 +1,5 @@
 import { formatters } from 'web3-core-helpers';
-const getSanitizedTx = tx => {
+const getSanitizedTx = (tx) => {
   return new Promise((resolve, reject) => {
     if (!tx.gas && !tx.gasLimit && !tx.chainId)
       return reject(new Error('"gas" or "chainId" is missing'));

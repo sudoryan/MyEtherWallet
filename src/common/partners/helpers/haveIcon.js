@@ -1,6 +1,6 @@
 import { haveIcon } from '../partnersConfig';
 
-const hasIcon = currency => {
+const hasIcon = (currency) => {
   if (haveIcon.includes(currency)) {
     return currency;
   } else if (haveIcon.includes(`${currency}-alt`)) {

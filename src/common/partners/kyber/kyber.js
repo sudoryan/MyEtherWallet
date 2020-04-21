@@ -25,7 +25,7 @@ import kyberCalls from './kyber-calls';
 const logger = debugLogger('v5:kyber-swap');
 const errorLogger = debugLogger('v5-error:kyber');
 
-const toBigNumber = num => {
+const toBigNumber = (num) => {
   return new BigNumber(num);
 };
 
@@ -116,9 +116,7 @@ export default class Kyber {
   }
 
   async kyberNetworkState() {
-    return await this.getKyberContractObject()
-      .methods.enabled()
-      .call();
+    return await this.getKyberContractObject().methods.enabled().call();
   }
 
   setNetwork(network) {
@@ -143,7 +141,7 @@ export default class Kyber {
         this.ens
           .resolver(kyberNetworkENS)
           .addr()
-          .then(address => {
+          .then((address) => {
             this.kyberNetworkAddress = address;
           })
           .catch(() => {
@@ -564,10 +562,7 @@ export default class Kyber {
   getTokenTradeGas(fromCurrency, toCurrency) {
     const fromGas = this.getTokenSwapGas(fromCurrency);
     const toGas = this.getTokenSwapGas(toCurrency);
-    return toBigNumber(fromGas)
-      .plus(toBigNumber(toGas))
-      .toFixed(0)
-      .toString();
+    return toBigNumber(fromGas).plus(toBigNumber(toGas)).toFixed(0).toString();
   }
 
   getTokenApprovalGas(token) {
@@ -608,7 +603,7 @@ export default class Kyber {
   getGasLimits(token) {
     try {
       const address = this.getTokenAddress(token);
-      const gasLimit = this.GAS_LIMITS.find(entry => {
+      const gasLimit = this.GAS_LIMITS.find((entry) => {
         return (
           entry.address.toLowerCase() === address.toLowerCase() ||
           entry.symbol === token

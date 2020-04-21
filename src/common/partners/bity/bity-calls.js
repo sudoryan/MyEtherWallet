@@ -51,7 +51,7 @@ const getExitRates = async () => {
   }
 };
 
-const getEstimate = async orderInfo => {
+const getEstimate = async (orderInfo) => {
   try {
     const results = await post(
       buildPath(),
@@ -66,7 +66,7 @@ const getEstimate = async orderInfo => {
   }
 };
 
-const createOrder = async orderInfo => {
+const createOrder = async (orderInfo) => {
   try {
     const results = await post(
       buildPath(),
@@ -82,7 +82,7 @@ const createOrder = async orderInfo => {
   }
 };
 
-const openOrder = async orderInfo => {
+const openOrder = async (orderInfo) => {
   try {
     const results = await post(
       buildPath(),
@@ -98,7 +98,7 @@ const openOrder = async orderInfo => {
   }
 };
 
-const orderDetails = async orderInfo => {
+const orderDetails = async (orderInfo) => {
   try {
     const results = await post(
       buildPath(),
@@ -114,7 +114,7 @@ const orderDetails = async orderInfo => {
   }
 };
 
-const getStatus = async orderInfo => {
+const getStatus = async (orderInfo) => {
   try {
     const results = await post(
       buildPath(),
@@ -129,7 +129,7 @@ const getStatus = async orderInfo => {
   }
 };
 
-const loginWithPhone = async exitData => {
+const loginWithPhone = async (exitData) => {
   try {
     if (exitData.phoneNumber.length <= 10) {
       throw Error('Invalid phone number. Check country code');
@@ -148,7 +148,7 @@ const loginWithPhone = async exitData => {
   }
 };
 
-const sendReceivedSmsCode = async exitData => {
+const sendReceivedSmsCode = async (exitData) => {
   try {
     const results = await post(
       buildPath(),
@@ -163,7 +163,7 @@ const sendReceivedSmsCode = async exitData => {
   }
 };
 
-const buildCyptoToFiatOrderData = async orderData => {
+const buildCyptoToFiatOrderData = async (orderData) => {
   try {
     const results = await post(
       buildPath(),
@@ -178,7 +178,7 @@ const buildCyptoToFiatOrderData = async orderData => {
   }
 };
 
-const getCyptoToFiatOrderDetails = async detailsData => {
+const getCyptoToFiatOrderDetails = async (detailsData) => {
   try {
     const results = await post(
       buildPath(),
@@ -193,7 +193,7 @@ const getCyptoToFiatOrderDetails = async detailsData => {
   }
 };
 
-const getStatusFiat = async orderInfo => {
+const getStatusFiat = async (orderInfo) => {
   try {
     const results = await post(
       buildPath(),

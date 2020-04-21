@@ -9,7 +9,7 @@ class HttpRequestManager {
       headers: { 'Content-Type': 'application/json' }
     };
     if (options.headers) {
-      options.headers.forEach(header => {
+      options.headers.forEach((header) => {
         config.headers[header.name] = header.value;
       });
     }
@@ -19,10 +19,10 @@ class HttpRequestManager {
   send(payload, callback) {
     this.request
       .post(this.host, payload)
-      .then(result => {
+      .then((result) => {
         callback(null, result.data);
       })
-      .catch(err => {
+      .catch((err) => {
         callback(err);
       });
   }

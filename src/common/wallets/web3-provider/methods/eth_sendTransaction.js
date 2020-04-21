@@ -11,13 +11,13 @@ import { Misc } from '@/helpers';
 
 const setEvents = (promiObj, tx, dispatch) => {
   promiObj
-    .once('transactionHash', hash => {
+    .once('transactionHash', (hash) => {
       dispatch('addNotification', ['Hash', tx.from, tx, hash]);
     })
-    .once('receipt', res => {
+    .once('receipt', (res) => {
       dispatch('addNotification', ['Receipt', tx.from, tx, res]);
     })
-    .on('error', err => {
+    .on('error', (err) => {
       dispatch('addNotification', ['Error', tx.from, tx, err]);
     });
 };
@@ -46,26 +46,26 @@ export default async (
   }
   tx.chainId = !tx.chainId ? store.state.network.type.chainID : tx.chainId;
   getSanitizedTx(tx)
-    .then(_tx => {
+    .then((_tx) => {
       if (store.state.wallet.identifier === WEB3_WALLET) {
-        eventHub.$emit(EventNames.SHOW_WEB3_CONFIRM_MODAL, _tx, _promiObj => {
+        eventHub.$emit(EventNames.SHOW_WEB3_CONFIRM_MODAL, _tx, (_promiObj) => {
           setEvents(_promiObj, _tx, store.dispatch);
           _promiObj
-            .once('transactionHash', hash => {
+            .once('transactionHash', (hash) => {
               res(null, toPayload(payload.id, hash));
             })
-            .on('error', err => {
+            .on('error', (err) => {
               res(err);
             });
         });
       } else {
-        eventHub.$emit(EventNames.SHOW_TX_CONFIRM_MODAL, _tx, _response => {
+        eventHub.$emit(EventNames.SHOW_TX_CONFIRM_MODAL, _tx, (_response) => {
           const _promiObj = store.state.web3.eth.sendSignedTransaction(
             _response.rawTransaction
           );
 
           _promiObj
-            .once('transactionHash', hash => {
+            .once('transactionHash', (hash) => {
               if (store.state.wallet !== null) {
                 const localStoredObj = locStore.get(
                   utils.sha3(store.state.wallet.getChecksumAddressString())
@@ -82,14 +82,14 @@ export default async (
               }
               res(null, toPayload(payload.id, hash));
             })
-            .on('error', err => {
+            .on('error', (err) => {
               res(err);
             });
           setEvents(_promiObj, _tx, store.dispatch);
         });
       }
     })
-    .catch(e => {
+    .catch((e) => {
       res(e);
     });
 };

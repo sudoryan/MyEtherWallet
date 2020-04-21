@@ -45,7 +45,7 @@ export default class SwapProviders {
     this.providerRatesRecieved = [];
 
     if (!this.online) return;
-    providers.forEach(entry => {
+    providers.forEach((entry) => {
       this.providerRateUpdates[entry.getName()] = 0;
       this.providers.set(entry.getName(), new entry(environmentSupplied));
     });
@@ -81,14 +81,14 @@ export default class SwapProviders {
   }
 
   get haveProviderRates() {
-    return Object.keys(this.providerRateUpdates).every(providerName => {
+    return Object.keys(this.providerRateUpdates).every((providerName) => {
       return this.providerRatesRecieved.includes(providerName);
     });
   }
 
   get ratesRetrieved() {
     let result = true;
-    this.providers.forEach(provider => {
+    this.providers.forEach((provider) => {
       if (!provider.ratesRetrieved) {
         result = false;
       }
@@ -116,13 +116,13 @@ export default class SwapProviders {
   }
 
   updateNetwork(network, web3) {
-    this.providers.forEach(provider => {
+    this.providers.forEach((provider) => {
       provider.setNetwork(network, web3);
     });
   }
 
   checkIfRatesPresent() {
-    this.providers.forEach(provider => {
+    this.providers.forEach((provider) => {
       if (
         !this.providerRatesRecieved.includes(provider.name) &&
         provider.hasRates > 0
@@ -145,7 +145,7 @@ export default class SwapProviders {
         }
         return 0;
       })
-      .map(item => item.symbol)
+      .map((item) => item.symbol)
       .reverse();
     const arraysForSort = [...tokenNameMap, ...TOP_OPTIONS_ORDER];
     return array.sort(comparator(arraysForSort));
@@ -154,7 +154,7 @@ export default class SwapProviders {
   buildInitialCurrencyArrays() {
     const collectMapTo = new Map();
     const collectMapFrom = new Map();
-    this.providers.forEach(provider => {
+    this.providers.forEach((provider) => {
       provider.getInitialCurrencyEntries(collectMapFrom, collectMapTo);
     });
 
@@ -165,7 +165,7 @@ export default class SwapProviders {
 
   setFromCurrencyBuilder(value) {
     const collectMap = new Map();
-    this.providers.forEach(provider => {
+    this.providers.forEach((provider) => {
       provider.getUpdatedFromCurrencyEntries(value, collectMap);
     });
     return this.optionSorting(Array.from(collectMap.values()));
@@ -173,7 +173,7 @@ export default class SwapProviders {
 
   setToCurrencyBuilder(value) {
     const collectMap = new Map();
-    this.providers.forEach(provider => {
+    this.providers.forEach((provider) => {
       provider.getUpdatedToCurrencyEntries(value, collectMap);
     });
     return this.optionSorting(Array.from(collectMap.values()));
@@ -188,7 +188,7 @@ export default class SwapProviders {
         fromCurrency !== toCurrency &&
         !Number.isNaN(+fromValue)
       ) {
-        this.providers.forEach(provider => {
+        this.providers.forEach((provider) => {
           if (provider.validSwap(fromCurrency, toCurrency)) {
             callsToMake.push(provider.getRate.bind(provider));
             providersFound.push(provider.name);
@@ -217,19 +217,19 @@ export default class SwapProviders {
         toValue
       );
       const results = await Promise.all(
-        callsToMake.map(func =>
+        callsToMake.map((func) =>
           func(fromCurrency, toCurrency, fromValue, toValue)
         )
       );
       if (
         results.every(
-          entry =>
+          (entry) =>
             entry.fromCurrency === fromCurrency &&
             entry.toCurrency === toCurrency
         )
       ) {
         const vals = bestProviderForQuantity(
-          results.map(entry => {
+          results.map((entry) => {
             if (+entry.rate > 0) {
               return {
                 provider: entry.provider,
@@ -239,7 +239,7 @@ export default class SwapProviders {
                 rate: +entry.rate,
                 minValue: entry.minValue || 0,
                 maxValue: entry.maxValue || 0,
-                computeConversion: function(_fromValue) {
+                computeConversion: function (_fromValue) {
                   return new BigNumber(_fromValue)
                     .times(this.rate)
                     .toFixed(6)
@@ -292,7 +292,7 @@ export default class SwapProviders {
 
   decimalForCalculation(currency) {
     if (!currency) return 6;
-    if (fiat.find(entry => entry.symbol === currency)) {
+    if (fiat.find((entry) => entry.symbol === currency)) {
       return 2;
     } else if (SwapProviders.isToken(currency)) {
       const decimal = SwapProviders.getTokenDecimals(currency);
@@ -306,10 +306,7 @@ export default class SwapProviders {
   convertToTokenWei(token, value) {
     const decimals = SwapProviders.getTokenDecimals(token);
     const denominator = new BigNumber(10).pow(decimals);
-    return new BigNumber(value)
-      .times(denominator)
-      .toFixed(0)
-      .toString(10);
+    return new BigNumber(value).times(denominator).toFixed(0).toString(10);
   }
 
   convertToTokenBase(token, value) {

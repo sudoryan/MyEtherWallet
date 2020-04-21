@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { toPayload } from './methods/jsonrpc';
 
-const toQueryString = params => {
+const toQueryString = (params) => {
   return Object.keys(params)
-    .map(function(k) {
+    .map(function (k) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
     })
     .join('&');
@@ -23,7 +23,7 @@ class EtherscanProxy {
         data: isGET ? {} : params,
         url: this.url + qString
       })
-        .then(res => {
+        .then((res) => {
           if (!res.data.error) resolve(res.data);
           else reject(res.data);
         })
@@ -38,7 +38,7 @@ class EtherscanProxy {
             module: 'proxy',
             action: 'eth_blockNumber'
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -50,7 +50,7 @@ class EtherscanProxy {
             tag: payload.params[0],
             boolean: payload.params[1]
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -61,7 +61,7 @@ class EtherscanProxy {
             action: 'eth_getBlockTransactionCountByNumber',
             tag: payload.params[0]
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -72,7 +72,7 @@ class EtherscanProxy {
             action: 'eth_getTransactionByHash',
             txhash: payload.params[0]
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -84,13 +84,13 @@ class EtherscanProxy {
             address: payload.params[0],
             tag: payload.params[1]
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
           break;
         case 'eth_call':
-          Object.keys(payload.params[0]).forEach(key =>
+          Object.keys(payload.params[0]).forEach((key) =>
             payload.params[0][key] === undefined
               ? delete payload.params[0][key]
               : ''
@@ -102,7 +102,7 @@ class EtherscanProxy {
               action: 'eth_call'
             })
           )
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -118,7 +118,7 @@ class EtherscanProxy {
               payload.params[0]
             )
           )
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -129,7 +129,7 @@ class EtherscanProxy {
             module: 'proxy',
             action: 'eth_sendRawTransaction'
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -140,7 +140,7 @@ class EtherscanProxy {
             module: 'proxy',
             action: 'eth_getTransactionReceipt'
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -152,7 +152,7 @@ class EtherscanProxy {
             module: 'proxy',
             action: 'eth_getTransactionCount'
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -162,7 +162,7 @@ class EtherscanProxy {
             module: 'proxy',
             action: 'eth_gasPrice'
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -174,7 +174,7 @@ class EtherscanProxy {
             module: 'proxy',
             action: 'eth_getCode'
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);
@@ -187,7 +187,7 @@ class EtherscanProxy {
             module: 'proxy',
             action: 'eth_getStorageAt'
           })
-            .then(body => {
+            .then((body) => {
               resolve(toPayload(payload.id, body.result));
             })
             .catch(reject);

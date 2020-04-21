@@ -1,4 +1,4 @@
-const getUint8Tx = tx => {
+const getUint8Tx = (tx) => {
   return {
     to: new Uint8Array(tx.to),
     value: new Uint8Array(tx.value),

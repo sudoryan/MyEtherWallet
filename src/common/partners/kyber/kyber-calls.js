@@ -7,7 +7,7 @@ function buildPath() {
   return swapApiEndpoints.base + swapApiEndpoints.kyber;
 }
 
-const getTokenList = async network => {
+const getTokenList = async (network) => {
   try {
     if (kyberMethods[network]) {
       const results = await post(
@@ -27,7 +27,7 @@ const getTokenList = async network => {
   }
 };
 
-const getRates = async network => {
+const getRates = async (network) => {
   try {
     if (kyberMethods[network]) {
       const results = await post(
@@ -47,7 +47,7 @@ const getRates = async network => {
   }
 };
 
-const getGasLimits = async network => {
+const getGasLimits = async (network) => {
   try {
     if (kyberMethods[network]) {
       const results = await post(

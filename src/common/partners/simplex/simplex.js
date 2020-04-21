@@ -292,7 +292,7 @@ export default class Simplex {
             }
           }
         }
-      }).then(_result => {
+      }).then((_result) => {
         return _result.result;
       });
     }

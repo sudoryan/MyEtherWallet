@@ -31,7 +31,7 @@ class MnemonicWallet {
   }
   getAccount(idx) {
     const derivedKey = this.hdKey.derive(this.basePath + '/' + idx);
-    const txSigner = async tx => {
+    const txSigner = async (tx) => {
       tx = new Transaction(tx, {
         common: commonGenerator(store.state.network)
       });
@@ -48,7 +48,7 @@ class MnemonicWallet {
         );
       return getSignTransactionObject(tx);
     };
-    const msgSigner = async msg => {
+    const msgSigner = async (msg) => {
       const msgHash = hashPersonalMessage(toBuffer(msg));
       const signed = ecsign(msgHash, derivedKey.privateKey);
       return Buffer.concat([

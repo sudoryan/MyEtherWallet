@@ -8,14 +8,14 @@ const ERRORS = {
     'keepKey.browserNotSupported'
 };
 const WARNING = {};
-export default err => {
+export default (err) => {
   const errorValues = Object.keys(ERRORS);
   const warningValues = Object.keys(WARNING);
-  const foundError = errorValues.find(item => {
+  const foundError = errorValues.find((item) => {
     return item.includes(err.message) || item.includes(err);
   });
 
-  const foundWarning = warningValues.find(item => {
+  const foundWarning = warningValues.find((item) => {
     return item.includes(err.message) || item.includes(err);
   });
 

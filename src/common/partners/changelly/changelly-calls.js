@@ -7,7 +7,7 @@ function buildPath() {
   return swapApiEndpoints.base + swapApiEndpoints.changelly;
 }
 
-const getCurrencies = async network => {
+const getCurrencies = async (network) => {
   try {
     if (changellyMethods[network]) {
       const results = await post(

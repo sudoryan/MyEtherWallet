@@ -5,7 +5,7 @@ import { utils } from '../helpers';
 
 const errorLogger = debugLogger('v5-error:changelly-api');
 
-const getSupportedCurrencies = async network => {
+const getSupportedCurrencies = async (network) => {
   try {
     const currencyList = await changellyCalls.getCurrencies(network);
     const currencyDetails = {};

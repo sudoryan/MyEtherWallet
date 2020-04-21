@@ -12,7 +12,7 @@ class Middleware {
     )(req, res);
   }
   run(req, res) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.executeMiddleware(req, res, resolve);
     });
   }

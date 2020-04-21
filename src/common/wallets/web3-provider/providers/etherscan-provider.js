@@ -67,10 +67,10 @@ class EtherscanProvider {
     middleware.use(async ({ payload }, res) => {
       this.proxy
         .request(payload)
-        .then(body => {
+        .then((body) => {
           res(null, body);
         })
-        .catch(err => {
+        .catch((err) => {
           if (typeof err !== Error && err.error)
             err = new Error(err.error.message);
           res(err);

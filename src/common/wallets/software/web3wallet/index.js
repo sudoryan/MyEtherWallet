@@ -24,7 +24,7 @@ class Web3Wallet extends WalletInterface {
     return new Promise((resolve, reject) => {
       this.web3.eth.personal
         .sign(msg, this.getAddressString())
-        .then(hex => {
+        .then((hex) => {
           resolve(getBufferFromHex(hex));
         })
         .catch(reject);

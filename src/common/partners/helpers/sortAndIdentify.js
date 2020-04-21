@@ -6,7 +6,7 @@ function dynamicSort(property, convertFunc) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function(a, b) {
+  return function (a, b) {
     if (convertFunc) {
       const result =
         convertFunc(+a[property]) < convertFunc(+b[property])
@@ -24,7 +24,7 @@ function dynamicSort(property, convertFunc) {
 
 function dynamicSortMultiple() {
   const props = arguments;
-  return function(obj1, obj2) {
+  return function (obj1, obj2) {
     let i = 0;
     let result = 0;
     const numberOfProperties = props.length;
@@ -46,20 +46,20 @@ function dynamicSortMultiple() {
   };
 }
 function cleanUndefined(providerData) {
-  return providerData.filter(entry => typeof entry !== 'undefined');
+  return providerData.filter((entry) => typeof entry !== 'undefined');
 }
 
 function bestProviderForQuantity(providerData, value) {
   providerData = cleanUndefined(providerData);
-  if (providerData.every(entry => value >= +entry.minValue)) {
+  if (providerData.every((entry) => value >= +entry.minValue)) {
     providerData.sort(dynamicSortMultiple('-rate'));
-  } else if (providerData.some(entry => value >= +entry.minValue)) {
+  } else if (providerData.some((entry) => value >= +entry.minValue)) {
     providerData = [
       ...providerData
-        .filter(entry => value >= entry.minValue)
+        .filter((entry) => value >= entry.minValue)
         .sort(dynamicSortMultiple('-rate')),
       ...providerData
-        .filter(entry => value < entry.minValue)
+        .filter((entry) => value < entry.minValue)
         .sort(dynamicSortMultiple('-rate', 'minValue'))
     ];
   } else {

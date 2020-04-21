@@ -1,23 +1,23 @@
 import { bufferToInt } from 'ethereumjs-util';
 
-const getBufferFromHex = hex => {
+const getBufferFromHex = (hex) => {
   hex = sanitizeHex(hex);
   const _hex = hex.toLowerCase().replace('0x', '');
   return new Buffer(_hex, 'hex');
 };
-const padLeftEven = hex => {
+const padLeftEven = (hex) => {
   hex = hex.length % 2 != 0 ? '0' + hex : hex;
   return hex;
 };
-const sanitizeHex = hex => {
+const sanitizeHex = (hex) => {
   hex = hex.substring(0, 2) == '0x' ? hex.substring(2) : hex;
   if (hex == '') return '';
   return '0x' + padLeftEven(hex);
 };
-const bufferToHex = buffer => {
+const bufferToHex = (buffer) => {
   return '0x' + buffer.toString('hex');
 };
-const getHexTxObject = tx => {
+const getHexTxObject = (tx) => {
   return {
     to: sanitizeHex(tx.to.toString('hex')),
     value: sanitizeHex(tx.value.toString('hex')),
@@ -28,7 +28,7 @@ const getHexTxObject = tx => {
     gasPrice: sanitizeHex(tx.gasPrice.toString('hex'))
   };
 };
-const getSignTransactionObject = tx => {
+const getSignTransactionObject = (tx) => {
   return {
     rawTransaction: bufferToHex(tx.serialize()),
     tx: {
@@ -45,7 +45,7 @@ const getSignTransactionObject = tx => {
     }
   };
 };
-const calculateChainIdFromV = v => {
+const calculateChainIdFromV = (v) => {
   const sigV = bufferToInt(v);
   let chainId = Math.floor((sigV - 35) / 2);
   if (chainId < 0) chainId = 0;

@@ -38,7 +38,7 @@ class BitBoxWallet {
   }
   getAccount(idx) {
     const derivedKey = this.hdKey.derive('m/' + idx);
-    const txSigner = async tx => {
+    const txSigner = async (tx) => {
       tx = new Transaction(tx, {
         common: commonGenerator(store.state.network)
       });
@@ -64,7 +64,7 @@ class BitBoxWallet {
         );
       return getSignTransactionObject(tx);
     };
-    const msgSigner = async msg => {
+    const msgSigner = async (msg) => {
       const msgHash = hashPersonalMessage(toBuffer(msg));
       const result = await this.bitbox.signMessage(
         this.basePath + '/' + idx,

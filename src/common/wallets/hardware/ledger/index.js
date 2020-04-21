@@ -59,7 +59,7 @@ class ledgerWallet {
       derivedKey = this.hdKey.derive('m/' + idx);
       accountPath = this.basePath + '/' + idx;
     }
-    const txSigner = async tx => {
+    const txSigner = async (tx) => {
       tx = new Transaction(tx, {
         common: commonGenerator(store.state.network)
       });
@@ -97,7 +97,7 @@ class ledgerWallet {
         );
       return getSignTransactionObject(tx);
     };
-    const msgSigner = async msg => {
+    const msgSigner = async (msg) => {
       const result = await this.ledger.signPersonalMessage(
         accountPath,
         toBuffer(msg).toString('hex')
@@ -131,7 +131,7 @@ class ledgerWallet {
     return this.supportedPaths;
   }
 }
-const createWallet = async basePath => {
+const createWallet = async (basePath) => {
   const _ledgerWallet = new ledgerWallet();
   await _ledgerWallet.init(basePath);
   return _ledgerWallet;
@@ -155,7 +155,7 @@ const getLedgerTransport = async () => {
   }
   return transport;
 };
-const getLedgerAppConfig = async _ledger => {
+const getLedgerAppConfig = async (_ledger) => {
   const appConfig = await _ledger.getAppConfiguration();
   return appConfig;
 };

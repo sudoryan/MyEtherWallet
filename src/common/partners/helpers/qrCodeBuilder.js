@@ -1,8 +1,8 @@
-const BTC = addr => {
+const BTC = (addr) => {
   return `bitcoin:${addr}`;
 };
 
-const BCH = addr => {
+const BCH = (addr) => {
   return `bitcoincash:${addr}`;
 };
 

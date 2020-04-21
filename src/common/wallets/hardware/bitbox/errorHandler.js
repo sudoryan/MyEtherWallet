@@ -11,17 +11,17 @@ const ERRORS = {
 };
 const WARNING = {};
 
-export default err => {
+export default (err) => {
   const loginsRemaining = err.message
     ? err.message.replace(/\D/g, '')
     : err.replace(/\D/g, '');
   const attempts = loginsRemaining.length > 0 ? loginsRemaining : '';
   const errorValues = Object.keys(ERRORS);
   const warningValues = Object.keys(WARNING);
-  const foundError = errorValues.find(item => {
+  const foundError = errorValues.find((item) => {
     return err.message ? err.message.includes(item) : err.includes(item);
   });
-  const foundWarning = warningValues.find(item => {
+  const foundWarning = warningValues.find((item) => {
     return err.message ? err.message.includes(item) : err.includes(item);
   });
 

@@ -42,18 +42,18 @@ const WARNING = {
     'ledgerError.unsupportedBrowserU2f'
 };
 
-export default err => {
+export default (err) => {
   const expected = err.message
     ? err.message.substr(err.message.indexOf('Expected'), err.message.length)
     : err.substr(err.indexOf('Expected'), err.message);
   const errorValues = Object.keys(ERRORS);
   const warningValues = Object.keys(WARNING);
-  const foundError = errorValues.find(item => {
+  const foundError = errorValues.find((item) => {
     if (err && err.message.includes(item)) return item;
     return item.includes(err.message) || item.includes(err);
   });
 
-  const foundWarning = warningValues.find(item => {
+  const foundWarning = warningValues.find((item) => {
     if (err && err.message.includes(item)) return item;
     return item.includes(err.message) || item.includes(err);
   });

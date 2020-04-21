@@ -55,7 +55,7 @@ class PocketRequestManager {
     } else if (host.includes('goerli')) {
       this.query = 'goerli';
     }
-    this.network = networks.find(o => o[this.query])[this.query];
+    this.network = networks.find((o) => o[this.query])[this.query];
     this.provider = new PocketProvider(
       this.network.ticker,
       this.network.netid,

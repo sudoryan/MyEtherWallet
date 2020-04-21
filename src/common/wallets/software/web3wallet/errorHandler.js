@@ -5,7 +5,7 @@ const ERRORS = {
 };
 const WARNING = {};
 
-export default err => {
+export default (err) => {
   const errorValues = Object.values(ERRORS);
   const warningValues = Object.values(WARNING);
   if (errorValues.includes(err.message)) {

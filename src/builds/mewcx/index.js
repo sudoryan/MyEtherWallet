@@ -15,7 +15,7 @@ const cxRoutes = [
     meta: { requiresAuth: false }
   }
 ];
-const configRoutes = routes => {
+const configRoutes = (routes) => {
   return routes.concat(cxRoutes);
 };
 export { app, configRoutes };

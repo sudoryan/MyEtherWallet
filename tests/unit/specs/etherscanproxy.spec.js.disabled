@@ -14,7 +14,7 @@ describe('EtherScan Proxy', () => {
           id: 5,
           jsonrpc: '2.0'
         })
-        .then(resp => {
+        .then((resp) => {
           expect(resp.id).toEqual(5);
           expect(resp.jsonrpc).toEqual('2.0');
           expect(resp.result.substr(0, 2)).toEqual('0x');
