@@ -22,7 +22,7 @@ import SendOffline from '@/web/containers/SendContainer/SendOffline';
 import NFTManager from '@/web/containers/SendContainer/NFTManager';
 
 import Swap from '@/web/containers/SwapContainer';
-import Dapps from '@/web/containers/DappsContainer';
+import Dapps from '@/web/views/DappsView';
 
 import Contract from '@/web/containers/ContractContainer';
 import DeployContract from '@/web/containers/ContractContainer/DeployContract';
@@ -215,7 +215,7 @@ const webRoutes = [
     ]
   }
 ];
-const configRoutes = routes => {
+const configRoutes = (routes) => {
   return routes.concat(webRoutes);
 };
 export { app, configRoutes };

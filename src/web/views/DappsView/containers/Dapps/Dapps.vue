@@ -1,6 +1,8 @@
 <template>
   <WhiteSheet>
-    <div class="pa-3">Dapps</div>
+    <div class="px-8 py-5">
+      aaaaqqq
+    </div>
   </WhiteSheet>
 </template>
 
